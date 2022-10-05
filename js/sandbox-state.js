@@ -7,7 +7,7 @@ const tic = {
     },
     current: {
         playerTurn:'',
-        currentBoard: ['','','','','','','','','']
+        currentBoard: ['X','X','X','O','','O','','','']
     },
     winConditions: {
         rows: {
@@ -28,6 +28,7 @@ const tic = {
         
     }
 }
+
 // checkWinConditions
 function checkBoard(){
     // check 3 values within winConditions rows,cols,diags
@@ -39,13 +40,31 @@ function checkBoard(){
     // end of for loop return 'No Winner'
     
 
+    // currentBoard and winConditions
+    // take array values from currentBoard compare with winConditions
+
+    // winConditions array values equals the index of currentBoard
+    // loop 
+    // if currentBoard[winC value] is equal to X or O
+    // if not end loop move to next row or col
+
 }
 
-for ( const i in tic.winConditions.rows){
-    console.log(i)
-    for (const ii of tic.winConditions.rows[i]){
-        console.log(ii)
-    }
-    
+for (let i = 0; i > tic.current.currentBoard.length; i++){
+    console.log()
 }
+
+// let arrayX = []; 
+// let arrayY = [];
+
+// let arrayW = [];
+
+// for ( const i in tic.winConditions.rows){
+//     console.log(i)
+//     for (const ii in tic.winConditions.rows[i]){
+//         console.log(tic.winConditions.rows[i][ii])
+//         //console.log(ii)
+//     }
+    
+// }
 
