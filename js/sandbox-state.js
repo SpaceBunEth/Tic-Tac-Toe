@@ -29,6 +29,19 @@ const tic = {
     }
 }
 
+
+// make array 
+// loop through row1, set array index to tic.current.currentBoard[row1[0]]
+// end loop after 3 values enter in new array
+// if every index in array is equal to X or O 
+// return winner
+
+//.some function returns true or false for array
+// take row1 
+
+//if func returns true
+// 
+
 // checkWinConditions
 function checkBoard(){
     // check 3 values within winConditions rows,cols,diags
@@ -50,9 +63,9 @@ function checkBoard(){
 
 }
 
-for (let i = 0; i > tic.current.currentBoard.length; i++){
-    console.log()
-}
+// for (let i = 0; i < tic.current.currentBoard.length; i++){
+//     console.log(tic.current.currentBoard[i])
+// }
 
 // let arrayX = []; 
 // let arrayY = [];
@@ -67,4 +80,8 @@ for (let i = 0; i > tic.current.currentBoard.length; i++){
 //     }
     
 // }
+
+for (const i in tic.winConditions){
+    console.log(i)
+}
 
