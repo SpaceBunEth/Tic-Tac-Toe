@@ -33,11 +33,19 @@ function checkBoard(){
     // check 3 values within winConditions rows,cols,diags
     // EX: ['X','X','X','O','','','O','','']
     // tic.current.currentBoard
-    // for loop     let i = 0   i > 2   i++
-    // let check = tic.winConditions.rows.row[i]
-    // if (tic.winConditions.rows.row[i] == tic.current.playerTurn){
-    //   return 'No winner'
-    // end of for loop return 'Winner'
+
+    //
+
+    // end of for loop return 'No Winner'
+    
+
+}
+
+for ( const i in tic.winConditions.rows){
+    console.log(i)
+    for (const ii of tic.winConditions.rows[i]){
+        console.log(ii)
+    }
     
 }
 
