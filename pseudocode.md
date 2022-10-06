@@ -262,4 +262,31 @@ div currentBoard
 ```
 ---
 
+### click event listener
 
+- We will need to pass the html id of our newly created div
+- In the same funtions that loops to create our html elements 
+- insert createEvent(div) after the element is assigned its html id
+- When div is clicked trigger divClicked() fun 
+- get Id of element that was clicked, RUN removeEvent passing id
+- 
+
+```
+//pass param id of element
+
+func createEvent(div) 
+    const divClick = document.getElementbyId(div)
+    divClick.addEvertListener('click', divClicked)
+
+func removeEvent(div)
+    const divClick = document.getElementbyId(div)
+    divClick.removeEvent()
+
+func divClicked(){
+    get id of element clicked
+    Run functions to Update State, DOM, remove click Event
+    For now console.log(`element Name ${div#} pressed!`)
+}
+
+```
+---
