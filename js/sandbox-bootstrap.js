@@ -104,6 +104,9 @@ function clearDom(header, body) {
     body.innerHTML = '';
 }
 
-
+//Pass
+function clickManger(){
+    
+}
 
 
