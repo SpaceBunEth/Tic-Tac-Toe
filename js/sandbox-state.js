@@ -46,6 +46,23 @@ function checkBoard(){
     return false
 }
 
+// Param boxNum Must be a int whole number, the length of currenBoard array values between (0-8)
+// TO-DO disable button on click Creating UI
+function UpdateState(boxNum){
+    
+    if (tic.current.currentBoard[boxNum] == ''){
+        tic.current.currentBoard[boxNum] = tic.current.playerTurn
+        if (tic.current.playerTurn == 'X'){
+            tic.current.playerTurn = 'O'
+        } else if (tic.current.playerTurn == 'O') {
+            tic.current.playerTurn = 'X'
+        }
+    } else {
+        console.log(`Cant place ${tic.current.playerTurn} Here`)
+    }
+
+}
+
 
 //------------------------------------------------
 // Run a click event USER CTA,
@@ -64,22 +81,24 @@ function checkBoard(){
 // Param playerTurn, index of currentBoard
 // Ex: "X" turn , "0"
 
-function UpdateState(boxNum){
+// function UpdateState(boxNum){
     
-    if (tic.current.currentBoard[boxNum] == ''){
-        tic.current.currentBoard[boxNum] = tic.current.playerTurn
-        if (tic.current.playerTurn == 'X'){
-            tic.current.playerTurn = 'O'
-        } else if (tic.current.playerTurn == 'O') {
-            tic.current.playerTurn = 'X'
-        }
-    } else {
-        console.log(`Cant place ${tic.current.playerTurn} Here`)
-    }
-    console.log(checkBoard())
-    console.log(tic.current.currentBoard)
+//     if (tic.current.currentBoard[boxNum] == ''){
+//         tic.current.currentBoard[boxNum] = tic.current.playerTurn
+//         if (tic.current.playerTurn == 'X'){
+//             tic.current.playerTurn = 'O'
+//         } else if (tic.current.playerTurn == 'O') {
+//             tic.current.playerTurn = 'X'
+//         }
+//     } else {
+//         console.log(`Cant place ${tic.current.playerTurn} Here`)
+//     }
+//     console.log(checkBoard())
+//     console.log(tic.current.currentBoard)
 
-}
+// }
+
+
 
 
 
