@@ -219,6 +219,47 @@ function UpdateState(boxNum){
 ---
 5. How to Reset State
 
+// Resets State of Obj 
+// Issue Resolved 
+//https://www.sitepoint.com/variable-assignment-mutation-javascript/
+```
+function resetState() {
+tic.current = { ...tic.default }
+}
 
+```
+
+---
+---
+## UI interface 
+
+### To-Do
+- Starting with a basic html webpage 
+- Added Bootstrap CDL
+- Create headerdiv for title, playerTurn, resetButton
+```
+div header
+    div title = "tic-tac-toe"
+    div playerTurn = playerTurn state
+    div resetButton // show at end of a game, winner loser or tie
+```
+
+- Create Board div, 9x cols matching currentBoard states
+- refresh every updateState() function
+- Disable div/ click event when state of currentBoard[div#] not equal to ""
+- assign bootstrap class of "col-4" to all sub-divs in currentBoard Div
+```
+div currentBoard
+    div 0
+    div 1
+    div 2
+    div 3
+    div 4
+    div 5
+    div 6
+    div 7
+    div 8
+```
+---
 
 
