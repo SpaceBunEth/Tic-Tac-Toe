@@ -89,6 +89,8 @@ function ObjElemCreate(obj) {
 function divBoard(){
     ObjElemCreate(headerDivElem)
     ObjElemCreate(boardDivElem)
+    //Create clickEvents for div0-div8
+    createEvent()
 }
 
 function updateDom(obj){
@@ -104,9 +106,17 @@ function clearDom(header, body) {
     body.innerHTML = '';
 }
 
-//Pass
-function clickManger(){
-    
+
+
+function createEvent(){
+    for(let i = 0; i <= 8; i++){
+        const div = document.getElementById(`div${i}`)
+        div.addEventListener("click", clickManager)
+    }
 }
 
-
+//Pass
+function clickManager(){
+    console.log(this.id)
+    document.getElementById(this.id).removeEventListener('click',clickManager)
+}
