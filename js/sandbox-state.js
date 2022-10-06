@@ -40,8 +40,13 @@ function checkBoard(){
         
             if (array.every((x) => x === 'X')){
                 return array.every((x) => x === 'X')
+            } else if (array.every((x) => x === 'O')){
+                return array.every((x) => x === 'O')
             }
         }
+    }
+    if (!tic.current.currentBoard.includes('')){
+        console.log('TIE!!!! No Winner')
     }
     return false
 }
@@ -51,7 +56,11 @@ function checkBoard(){
 function UpdateState(boxNum){
     
     if (tic.current.currentBoard[boxNum] == ''){
+
         tic.current.currentBoard[boxNum] = tic.current.playerTurn
+        console.log("Checking for Winner: ",tic.current.playerTurn,checkBoard())
+        console.log(tic.current.currentBoard)
+
         if (tic.current.playerTurn == 'X'){
             tic.current.playerTurn = 'O'
         } else if (tic.current.playerTurn == 'O') {
@@ -61,6 +70,12 @@ function UpdateState(boxNum){
         console.log(`Cant place ${tic.current.playerTurn} Here`)
     }
 
+}
+// Resets State of Obj 
+// Issue Resolved 
+//https://www.sitepoint.com/variable-assignment-mutation-javascript/
+function resetState() {
+tic.current = { ...tic.default }
 }
 
 
@@ -174,3 +189,7 @@ function UpdateState(boxNum){
 //     }
 // }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+// for (const iiii in tic.winConditions){
+//     console.log(iiii)
+// }
