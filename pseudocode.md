@@ -94,13 +94,14 @@ We will sandbox the first part of our tic-tac-toe program. The goal with the san
 1. How to write a tic-tac-toe console.log javascript
 2. How to manange state
 3. How to find and determain winCondition of the board
-4. How to Reset State
+4. How to change state/ Update state after CTA
+5. How to Reset State
 
 --- 
 
 ## State
-#### Mange State Of Board:
 
+2. How to manange state
 We can manage state with and object, then added another Object within to mangage our default values for state. 
 
 Check currentBoard and playerTurn state. What are the winning combos in the currentBoard array? Array [0,1,2,3,4,5,6,7,8].
@@ -190,5 +191,7 @@ function checkBoard(){
     return false
 }
 ```
+---
+4. How to change state/ Update state after CTA
 
 
