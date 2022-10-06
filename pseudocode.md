@@ -290,3 +290,17 @@ func divClicked(){
 
 ```
 ---
+
+### Putting it all together
+
+Now that our helper functions are created and our console.log version of tic-tac-toe is working as well as our bootstrap UI.
+We can begin to prep our functions to merge into our tic-tac-toe program.
+We have state manager functions, and user input/ Bootstrap Dom functions.
+We can start by assigning values of pageContent to our state obj
+We want the Dom data to be dependent upon our state 
+Only to have the click event to trigger the Update of state and return html id info.
+
+
+
+
+
