@@ -81,7 +81,21 @@ function checkBoard(){
     
 // }
 
+
 for (const i in tic.winConditions){
+
     console.log(i)
+    for (const ii in tic.winConditions[i]){
+        let array = []
+        console.log(ii)
+        for (const iii of tic.winConditions[i][ii]){
+            console.log(iii)
+
+            array.push(tic.current.currentBoard[iii])
+        }
+        console.log(array)
+        console.log(array.every((x) => x === 'X'));
+    }
 }
+
 
