@@ -167,5 +167,28 @@ const tic = {
 
 
 ```
+---
+
+3. How to find and determain winCondition of the board
+
+
+Func checkWinConditions() 
+```
+function checkBoard(){
+    for (const i in tic.winConditions){
+        for (const ii in tic.winConditions[i]){
+            let array = [];
+            for (const iii of tic.winConditions[i][ii]){
+                array.push(tic.current.currentBoard[iii])
+            }
+        
+            if (array.every((x) => x === 'X')){
+                return array.every((x) => x === 'X')
+            }
+        }
+    }
+    return false
+}
+```
 
 
