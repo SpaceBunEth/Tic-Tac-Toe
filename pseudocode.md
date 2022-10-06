@@ -194,4 +194,31 @@ function checkBoard(){
 ---
 4. How to change state/ Update state after CTA
 
+- Param boxNum Must be a int whole number, the length of currenBoard array values between (0-8)
+- TO-DO disable button on click Creating UI
+
+```
+
+function UpdateState(boxNum){
+    
+    if (tic.current.currentBoard[boxNum] == ''){
+        tic.current.currentBoard[boxNum] = tic.current.playerTurn
+        if (tic.current.playerTurn == 'X'){
+            tic.current.playerTurn = 'O'
+        } else if (tic.current.playerTurn == 'O') {
+            tic.current.playerTurn = 'X'
+        }
+    } else {
+        console.log(`Cant place ${tic.current.playerTurn} Here`)
+    }
+
+}
+
+```
+
+---
+5. How to Reset State
+
+
+
 
