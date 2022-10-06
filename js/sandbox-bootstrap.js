@@ -1,6 +1,9 @@
 console.log('sandbox-bootstrap')
 
+//============State Manager==============
 
+
+//===========End State Manager===========
 
 //-----------Start of ReUsed Code-----------
 
@@ -16,6 +19,7 @@ headerDiv.setAttribute('id', 'headerDiv');
 htmlBody.appendChild(headerDiv);
 const bodyDiv = document.createElement('div');
 bodyDiv.setAttribute('id', 'bodyDiv');
+bodyDiv.setAttribute('class','vh-100')
 htmlBody.appendChild(bodyDiv);
 
 
@@ -42,25 +46,41 @@ const headerDivElem = {
     resetButton:['button','resetButton','headerDiv','']
 }
 const boardDivElem = {
-    divBoard:['div','divBoard','bodyDiv',''],
-    div0:['div','div0','divBoard',''],
-    div1:['div','div1','divBoard',''],
-    div2:['div','div2','divBoard',''],
-    div3:['div','div3','divBoard',''],
-    div4:['div','div4','divBoard',''],
-    div5:['div','div5','divBoard',''],
-    div6:['div','div6','divBoard',''],
-    div7:['div','div7','divBoard',''],
-    div8:['div','div8','divBoard','']
+    divBoard:['div','divBoard','bodyDiv','container ratio ratio-1x1'],
+    divBoardRow:['div','divBoardRow','divBoard','row'],
+    div0:['div','div0','divBoardRow','col-4 border'],
+    div1:['div','div1','divBoardRow','col-4 border'],
+    div2:['div','div2','divBoardRow','col-4 border'],
+    div3:['div','div3','divBoardRow','col-4 border'],
+    div4:['div','div4','divBoardRow','col-4 border'],
+    div5:['div','div5','divBoardRow','col-4 border'],
+    div6:['div','div6','divBoardRow','col-4 border'],
+    div7:['div','div7','divBoardRow','col-4 border'],
+    div8:['div','div8','divBoardRow','col-4 border']
 }
 
-function ObjElemCreate(Obj) {
-    for (const key in Obj){
+// Assign values to state obj tic.current
+// update on every call to action
+pageContent = {
 
-        //console.log(key)
-        if(Obj.hasOwnProperty(key)) {
-            //console.log(Obj[key][0],key,Obj[key][2],Obj[key][3]);
-            createElem(Obj[key][0],key,Obj[key][2],Obj[key][3]);
+    title: 'Tic-Tac-Toe',
+    playerTurn: 'Player Turn',
+    resetButton: 'Play?',
+    div0: '',
+    div1: 'x',
+    div2: '',
+    div3: '',
+    div4: 'x',
+    div5: '',
+    div6: '',
+    div7: 'x',
+    div8: ''
+}
+
+function ObjElemCreate(obj) {
+    for (const key in obj){
+        if(obj.hasOwnProperty(key)) {
+            createElem(obj[key][0],key,obj[key][2],obj[key][3]);
 
         }
     }
@@ -69,6 +89,19 @@ function ObjElemCreate(Obj) {
 function divBoard(){
     ObjElemCreate(headerDivElem)
     ObjElemCreate(boardDivElem)
+}
+
+function updateDom(obj){
+    for(const key in obj){
+        const content = document.getElementById(key)
+        content.innerHTML = obj[key]
+    }
+}
+
+//pass Param headerDiv and bodyDiv
+function clearDom(header, body) {
+    header.innerHTML = '';
+    body.innerHTML = '';
 }
 
 
