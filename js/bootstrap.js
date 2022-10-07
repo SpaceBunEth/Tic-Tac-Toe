@@ -214,7 +214,7 @@ function clickManager(e){
 //  console.log(e)
 //  console.log(e.target.dataset.number)
     UpdateState(e.target.dataset.number)
-   // e.target.dataset.number
+    updateDom(pageContent)
     document.getElementById(this.id).removeEventListener('click',clickManager)
 }
 //==========END Of UI=============
