@@ -5,12 +5,13 @@ const tic = {
     default: {
         playerTurn:'X',
         currentBoard: ['','','','','','','','',''],
-        resetButton: 'Play?'
+        resetButton: 'Play?',
+
     },
     current: {
         playerTurn:'X',
         currentBoard: ['','','','','','','','',''],
-        resetButton: 'Play?'
+        resetButton: 'Play?',
     },
     winConditions: {
         rows: {
@@ -61,6 +62,14 @@ function UpdateState(boxNum){
     if (tic.current.currentBoard[boxNum] == ''){
 
         tic.current.currentBoard[boxNum] = tic.current.playerTurn
+
+        if(checkBoard()){
+            console.log('WINNER WINNER')
+            removeDivClick()
+            
+            document.getElementById('playerTurn').innerHTML = `Player ${tic.current.playerTurn} Wins!`
+        }
+
         console.log("Checking for Winner: ",tic.current.playerTurn,checkBoard())
         console.log(tic.current.currentBoard)
 
@@ -79,8 +88,19 @@ function UpdateState(boxNum){
 // Resets State of Obj 
 // Issue Resolved 
 //https://www.sitepoint.com/variable-assignment-mutation-javascript/
-function resetState() {
-tic.current = { ...tic.default }
+function resetState(e) {
+    console.log('click')
+    document.getElementById(this.id).removeEventListener('click',clickManager)
+    clearDom(headerDiv,bodyDiv)
+    //tic.current.currentBoard = { ...tic.default }
+    tic.current.currentBoard = ['','','','','','','','','']; //{ ...tic.default }
+    tic.current.playerTurn = 'X'
+    tic.current.resetButton = "Reset"
+
+    divBoard()
+    updateDom(pageContent)
+//divBoard()
+//updateDom(pageContent)
 }
 
 
@@ -207,6 +227,7 @@ function createEvent(){
         div.setAttribute('data-number',i)//create data- tag for div0-8 
         div.addEventListener("click", clickManager)
     }
+    document.getElementById('resetButton').addEventListener('click',resetState)
 }
 
 //Pass
@@ -217,4 +238,16 @@ function clickManager(e){
     updateDom(pageContent)
     document.getElementById(this.id).removeEventListener('click',clickManager)
 }
+
+function removeDivClick(){
+    for(let i = 0; i <= 8; i++){
+        //console.log(getEventListeners(document.getElementById(`div${i}`)).array)
+       document.getElementById(`div${i}`).removeEventListener('click',clickManager)
+       // getEventListeners(document.querySelector('your-element-selector'));
+    }
+}
 //==========END Of UI=============
+
+//INIT()
+divBoard()
+updateDom(pageContent)
