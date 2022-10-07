@@ -83,7 +83,6 @@ function resetState(e) {
     tic.current.currentBoard = ['','','','','','','','','']; 
     tic.current.playerTurn = 'X'
     tic.current.resetButton = "Reset"
-
     divBoard()
     updateDom(pageContent)
 }
