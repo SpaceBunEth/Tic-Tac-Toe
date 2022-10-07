@@ -57,7 +57,7 @@ function checkBoard(){
 // Param boxNum Must be a int whole number, the length of currenBoard array values between (0-8)
 // TO-DO disable button on click Creating UI
 function UpdateState(boxNum){
-    
+    console.log(tic.current.currentBoard)
     if (tic.current.currentBoard[boxNum] == ''){
 
         tic.current.currentBoard[boxNum] = tic.current.playerTurn
@@ -69,11 +69,13 @@ function UpdateState(boxNum){
         } else if (tic.current.playerTurn == 'O') {
             tic.current.playerTurn = 'X'
         }
-    } else {
-        console.log(`Cant place ${tic.current.playerTurn} Here`)
     }
+    //  else {
+    //     console.log(`Cant place ${tic.current.playerTurn} Here`)
+    // }
 
 }
+
 // Resets State of Obj 
 // Issue Resolved 
 //https://www.sitepoint.com/variable-assignment-mutation-javascript/
@@ -146,17 +148,17 @@ const boardDivElem = {
 pageContent = {
 
     title: 'Tic-Tac-Toe',
-    playerTurn: `Player ${tic.current.playerTurn}'s Turn`,
-    resetButton: tic.current.resetButton,
-    div0: tic.current.currentBoard[0],
-    div1: tic.current.currentBoard[1],
-    div2: tic.current.currentBoard[2],
-    div3: tic.current.currentBoard[3],
-    div4: tic.current.currentBoard[4],
-    div5: tic.current.currentBoard[5],
-    div6: tic.current.currentBoard[6],
-    div7: tic.current.currentBoard[7],
-    div8: tic.current.currentBoard[8]
+    playerTurn: `Player 's Turn`,
+    resetButton: 'Play',
+    div0: '',
+    div1: '',
+    div2: '',
+    div3: '',
+    div4: '',
+    div5: '',
+    div6: '',
+    div7: '',
+    div8: ''
 }
 
 function ObjElemCreate(obj) {
@@ -176,9 +178,17 @@ function divBoard(){
 }
 
 
+
+
 function updateDom(obj){
+    pageContent.playerTurn = `Player ${tic.current.playerTurn}'s Turn`
+    pageContent.resetButton = tic.current.resetButton
+    for(let i = 0; i <= 8; i++){
+        pageContent[`div${i}`] = tic.current.currentBoard[i]
+    }
     for(const key in obj){
         const content = document.getElementById(key)
+        console.log(obj[key])
         content.innerHTML = obj[key]
     }
 }
@@ -201,8 +211,10 @@ function createEvent(){
 
 //Pass
 function clickManager(e){
-    console.log(e)
-    
+//  console.log(e)
+//  console.log(e.target.dataset.number)
+    UpdateState(e.target.dataset.number)
+   // e.target.dataset.number
     document.getElementById(this.id).removeEventListener('click',clickManager)
 }
 //==========END Of UI=============
