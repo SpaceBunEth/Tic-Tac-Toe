@@ -49,34 +49,33 @@ function checkBoard(){
             }
         }
     }
-    if (!tic.current.currentBoard.includes('')){
-        console.log('TIE!!!! No Winner')
-    }
     return false
 }
+
+
 
 // Param boxNum Must be a int whole number, the length of currenBoard array values between (0-8)
 // TO-DO disable button on click Creating UI
 function UpdateState(boxNum){
     console.log(tic.current.currentBoard)
+
     if (tic.current.currentBoard[boxNum] == ''){
 
         tic.current.currentBoard[boxNum] = tic.current.playerTurn
 
-        if(checkBoard()){
-            console.log('WINNER WINNER')
-            removeDivClick()
-            
-            document.getElementById('playerTurn').innerHTML = `Player ${tic.current.playerTurn} Wins!`
-        }
-
         console.log("Checking for Winner: ",tic.current.playerTurn,checkBoard())
         console.log(tic.current.currentBoard)
 
-        if (tic.current.playerTurn == 'X'){
-            tic.current.playerTurn = 'O'
+        if (checkBoard()){
+            console.log('stop Game')
+            removeDivClick()
+            return false
         } else if (tic.current.playerTurn == 'O') {
             tic.current.playerTurn = 'X'
+            return true
+        } else if (tic.current.playerTurn == 'X'){
+            tic.current.playerTurn = 'O'
+            return true
         }
     }
     //  else {
@@ -84,6 +83,14 @@ function UpdateState(boxNum){
     // }
 
 }
+
+// if(checkBoard()){
+//     console.log('WINNER WINNER')
+//     removeDivClick()
+//     pageContent.playerTurn = `Player ${tic.current.playerTurn} Wins! `
+//     document.getElementById('playerTurn').innerHTML = ''//`Player ${tic.current.playerTurn} Wins!`
+//    return
+// }
 
 // Resets State of Obj 
 // Issue Resolved 
@@ -114,12 +121,14 @@ function resetState(e) {
 // Set const to body and assign id with "bodyid"
 let htmlBody = document.querySelector('body');
 htmlBody.setAttribute('id','bodyid');
+htmlBody.setAttribute('class','container ')
 
 
 // Create a set of headerDiv and bodyDiv for our content
 // Use as reference for when appending childs
 const headerDiv = document.createElement('div');
 headerDiv.setAttribute('id', 'headerDiv');
+headerDiv.setAttribute('class', 'row justify-content-center text-center')
 htmlBody.appendChild(headerDiv);
 const bodyDiv = document.createElement('div');
 bodyDiv.setAttribute('id', 'bodyDiv');
@@ -147,7 +156,7 @@ function createElem(htmlElem, idName, parentElem, className = null){
 const headerDivElem = {
     title:['h1','title','headerDiv',''],
     playerTurn:['h2','playerTurn','headerDiv',''],
-    resetButton:['button','resetButton','headerDiv','']
+    resetButton:['button','resetButton','headerDiv','col-2']
 }
 const boardDivElem = {
     divBoard:['div','divBoard','bodyDiv','container ratio ratio-1x1'],
@@ -198,11 +207,26 @@ function divBoard(){
 }
 
 
+function tieGame(){
 
 
-function updateDom(obj){
-    pageContent.playerTurn = `Player ${tic.current.playerTurn}'s Turn`
-    pageContent.resetButton = tic.current.resetButton
+}
+
+
+
+function updateDom(obj, j){
+    if(j){
+        if (!tic.current.currentBoard.includes('')){
+            pageContent.playerTurn = "Tie No Winners!"
+        } else{
+        pageContent.playerTurn = `Player ${tic.current.playerTurn}'s Turn`
+        pageContent.resetButton = tic.current.resetButton
+        }
+    }else{
+        pageContent.playerTurn = `Player ${tic.current.playerTurn} Wins!`
+    }
+
+    
     for(let i = 0; i <= 8; i++){
         pageContent[`div${i}`] = tic.current.currentBoard[i]
     }
@@ -234,8 +258,15 @@ function createEvent(){
 function clickManager(e){
 //  console.log(e)
 //  console.log(e.target.dataset.number)
-    UpdateState(e.target.dataset.number)
-    updateDom(pageContent)
+    if (UpdateState(e.target.dataset.number)){
+        console.log('true')
+        updateDom(pageContent, true)
+    } else {
+        console.log('false')
+        updateDom(pageContent, false)
+        
+    }
+    
     document.getElementById(this.id).removeEventListener('click',clickManager)
 }
 
